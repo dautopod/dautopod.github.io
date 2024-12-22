@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InKern AI - Empowering Social Media</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+            overflow: hidden;
+        }
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #0073e6;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+        header h1 {
+            margin: 0;
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0 20px 0 0;
+            display: flex;
+        }
+        nav ul li {
+            margin-left: 20px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+        main {
+            height: 100vh;
+            scroll-snap-type: y mandatory;
+            overflow-y: scroll;
+        }
+        section {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            text-align: left;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            color: #0073e6;
+            padding-left: 50px;
+            scroll-snap-align: start;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        section.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(5px);
+            z-index: 1;
+        }
+        section div {
+            position: relative;
+            z-index: 2;
+        }
+        section h2, section h3 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        section p {
+            font-size: 1.5rem;
+            line-height: 1.8;
+        }
+        #home {
+            background-image: url('img/home.jpg');
+        }
+        #products {
+            background-image: url('img/products.jpg');
+        }
+        #about {
+            background-image: url('img/about.jpg');
+        }
+        #contact {
+            background-image: url('img/contact.jpg');
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+        a {
+            text-decoration: none;
+            color: #0073e6;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>InKern AI</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home">
+            <div>
+                <h2>Empowering Your Social Media</h2>
+                <p>InKern AI uses cutting-edge artificial intelligence to automate and elevate your social media presence.</p>
+                <p>Our vision is to provide individuals and businesses with greater personal control over their social media, from filtering and prioritizing messages to fully automating routine tasks. This ensures a more meaningful and productive online experience.</p>
+            </div>
+        </section>
+
+        <section id="products">
+            <div>
+                <h3>Our Product</h3>
+                <p>Our automated social media management tool helps you schedule, optimize, and analyze your messages and posts effortlessly, leaving you with more time to focus on yourself.</p>
+                <p>With AI-driven insights, our platform identifies trends, recommends the best responses, and ensures your content reaches the right audience for maximum impact.</p>
+            </div>
+        </section>
+
+        <section id="about">
+            <div>
+                <h3>About Us</h3>
+                <p>At InKern AI, we believe in innovation and simplicity. Our mission is to harness the power of AI to make social media management a breeze for businesses of all sizes.</p>
+                <p>Founded by a team of passionate technologists, we are committed to delivering solutions that save time, enhance engagement, and drive growth for our clients.</p>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div>
+                <h3>Contact Us</h3>
+                <p>We would love to hear from you. Reach out at <a href="mailto:info@inkern.ai">info@inkern.ai</a>.</p>
+                <p>Follow us on our social channels for the latest updates and tips to enhance your social media presence.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 InKern AI. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const sections = document.querySelectorAll('section');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                } else {
+                    entry.target.classList.remove('active');
+                }
+            });
+        }, { threshold: 0.5 });
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
